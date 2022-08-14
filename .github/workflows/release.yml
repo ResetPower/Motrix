@@ -58,3 +58,10 @@ jobs:
           # macOS notarization API key
           API_KEY_ID: ${{ secrets.api_key_id }}
           API_KEY_ISSUER_ID: ${{ secrets.api_key_issuer_id }}
+      - name: Upload Artifact
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v2
+        with:
+          name: art
+          retention-days: 1
+          path: release/Motrix-1.6.11.dmg
